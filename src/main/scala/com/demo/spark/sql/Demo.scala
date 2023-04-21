@@ -14,7 +14,9 @@ object Demo {
     val session: SparkSession = SparkSession.builder().config(conf).getOrCreate()
     val sc = session.sparkContext
     sc.setLogLevel("ERROR")
-    val value: RDD[String] = sc.textFile("/tmp/demo.log").map(x => {
+
+
+    val value: RDD[String] = sc.textFile("data/demo.log").map(x => {
       val strings: Array[String] = x.split("信息：")
       strings(1)
     })
