@@ -11,6 +11,7 @@ object WordCountScala {
     conf.setMaster("local")
 
     val sc = new SparkContext(conf)
+    sc.setLogLevel("ERROR")
     val fileRDD: RDD[String] = sc.textFile("data/testdata.txt")
 
     // hello world
