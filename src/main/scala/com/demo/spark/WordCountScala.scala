@@ -8,7 +8,7 @@ object WordCountScala {
   def main(args: Array[String]): Unit = {
     val conf = new SparkConf()
     conf.setAppName("wordcount")
-    conf.setMaster("local") // 单机本地运行
+    conf.setMaster("local")
 
     val sc = new SparkContext(conf)
     val fileRDD: RDD[String] = sc.textFile("data/testdata.txt")
@@ -33,6 +33,10 @@ object WordCountScala {
     })
 
     res.foreach(println)
+
+
+    // fileRDD.flatMap(_.split(" ")).map((_,1)).reduceByKey(_+_).foreach(println)
+    // fileRDD.flatMap(_.split(" ")).map((_,1)).reduceByKey(_+_).map(x=>{(x._2,1)}).reduceByKey(_+_).foreach(println)
   }
 
 }
