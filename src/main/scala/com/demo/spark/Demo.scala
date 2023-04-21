@@ -12,7 +12,7 @@ object Demo {
     val sc = new SparkContext(conf)
     sc.setLogLevel("ERROR")
 
-    val fileRDD = sc.textFile("/tmp/demo.log")
+    val fileRDD = sc.textFile("data/demo.log")
     val mapRDD = fileRDD.map(x => {
       val lists: Array[String] = x.split("信息：")
       val jsonStr = lists(1)
@@ -34,7 +34,7 @@ object Demo {
 
 
     mapRDD.map(x=>{("A", x._2)}).reduceByKey(_+_).foreach(println)
-    mapRDD.map(x=>{("A", x._2)}).reduceByKey(_+_).saveAsTextFile("/tmp/demo_result")
+    // mapRDD.map(x=>{("A", x._2)}).reduceByKey(_+_).saveAsTextFile("/tmp/demo_result")
 
   }
 
