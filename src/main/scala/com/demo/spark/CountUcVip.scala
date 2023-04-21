@@ -3,7 +3,7 @@ package com.demo.spark
 import com.google.gson.{JsonElement, JsonObject, JsonParser}
 import org.apache.spark.{SparkConf, SparkContext}
 
-object Demo {
+object CountUcVip {
 
   def main(args: Array[String]): Unit = {
     val conf = new SparkConf()
